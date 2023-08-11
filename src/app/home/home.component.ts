@@ -9,16 +9,23 @@ import { HomeService } from '../home.service';
 })
 export class HomeComponent implements OnInit {
 
-  readonly baseUrl = 'https://angular.io/assets/images/tutorials/faa';
+  // readonly baseUrl = 'https://angular.io/assets/images/tutorials/faa';
 
   homeLocationList: Location[] = [];
-  HomeService: HomeService = inject(HomeService);
+  homeService: HomeService = inject(HomeService);
   filtering: Location[] = [];
 
+  // constructor() {
+  //   this.homeLocationList = this.HomeService.getAllLocations();
+  //   this.filtering = this.homeLocationList;
+  // };
+
   constructor() {
-    this.homeLocationList = this.HomeService.getAllLocations();
-    this.filtering = this.homeLocationList;
-  };
+    this.homeService.getAllHousingLocations().then((housingLocationList: Location[]) => {
+      this.homeLocationList = housingLocationList;
+      this.filtering = housingLocationList;
+    });
+  }
 
   ngOnInit(): void {
 

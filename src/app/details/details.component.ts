@@ -24,9 +24,16 @@ export class DetailsComponent {
     email: new FormControl('')
   })
 
+  // constructor() {
+  //   const homeLocationId = Number(this.route.snapshot.params['id']);
+  //   this.homeLocation = this.homeService.getLocationById(homeLocationId);
+  // }
+
   constructor() {
-    const homeLocationId = Number(this.route.snapshot.params['id']);
-    this.homeLocation = this.homeService.getLocationById(homeLocationId);
+    const housingLocationId = parseInt(this.route.snapshot.params['id'], 10);
+    this.homeService.getHousingLocationById(housingLocationId).then(housingLocation => {
+      this.homeLocation = housingLocation;
+    });
   }
 
   submitApplication() {
