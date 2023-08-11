@@ -2,4 +2,5 @@
   <img class="listing-photo" [src]="homeLocation.photo" alt="Exterior photo of {{homeLocation.name}}">
   <h2 class="listing-heading">{{ homeLocation.name }}</h2>
   <p class="listing-location">{{ homeLocation.city}}, {{homeLocation.state }}</p>
+  <a [routerLink]="['/details', homeLocation.id]">Learn more</a>
 </section>
