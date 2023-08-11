@@ -5,5 +5,5 @@
   </form>
 </section>
 <section class="results">
-  <app-home-location [homeLocation]="homeLocation"></app-home-location>
+  <app-home-location *ngFor="let homeLocation of homeLocationList" [homeLocation]="homeLocation"></app-home-location>
 </section>
