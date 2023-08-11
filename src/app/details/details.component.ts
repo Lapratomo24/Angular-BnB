@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HomeService } from '../home.service';
 import { Location } from '../location';
+import { FormControl, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -17,9 +18,23 @@ export class DetailsComponent {
 
   homeLocation: Location | undefined;
 
+  applyForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    email: new FormControl('')
+  })
+
   constructor() {
     const homeLocationId = Number(this.route.snapshot.params['id']);
     this.homeLocation = this.homeService.getLocationById(homeLocationId);
+  }
+
+  submitApplication() {
+    this.homeService.submitApplication(
+      this.applyForm.value.firstName ?? '',
+      this.applyForm.value.lastName ?? '',
+      this.applyForm.value.email ?? ''
+    )
   }
 
 }

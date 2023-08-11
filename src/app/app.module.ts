@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { HomeLocationComponent } from './home-location/home-location.component';
 import { DetailsComponent } from './details/details.component';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

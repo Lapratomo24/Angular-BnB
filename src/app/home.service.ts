@@ -120,4 +120,8 @@ export class HomeService {
   }
 
   constructor() { }
+
+  submitApplication(firstName: string, lastName: string, email: string) {
+    console.log(`Homes application received: ${firstName} ${lastName} - ${email}`);
+  }
 }
