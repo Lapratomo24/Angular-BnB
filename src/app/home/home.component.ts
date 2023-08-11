@@ -13,12 +13,24 @@ export class HomeComponent implements OnInit {
 
   homeLocationList: Location[] = [];
   HomeService: HomeService = inject(HomeService);
+  filtering: Location[] = [];
 
   constructor() {
     this.homeLocationList = this.HomeService.getAllLocations();
+    this.filtering = this.homeLocationList;
   };
 
   ngOnInit(): void {
 
+  }
+
+  filtered(text: string) {
+    if (!text) {
+      this.filtering = this.homeLocationList;
+    }
+
+    this.filtering = this.homeLocationList.filter(
+      location => location?.city.toLowerCase().includes(text.toLowerCase())
+    );
   }
 }
